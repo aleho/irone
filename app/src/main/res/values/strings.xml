@@ -1,0 +1,58 @@
+<!--
+  ~ Copyright © 2018 Alexander Hofbauer
+  ~
+  ~ This file is part of IronE.
+  ~
+  ~ IronE is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ IronE is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with IronE.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name" translatable="false">IronE</string>
+    <string name="notification_service_name" translatable="false">IronE Notification Listener</string>
+
+    <string name="logo" translatable="false">Logo</string>
+    <string name="app_image" translatable="false">app</string>
+
+    <string name="notifications_intent_question">Access to notifications has not yet been enabled for this app. Enable now?</string>
+    <string name="permissions_needed_calendar">Access to calendar is needed to add events which will be picked up as notifications.</string>
+    <string name="permissions_needed_bluetooth">Bluetooth is needed to send notifications to your watch.</string>
+
+    <string name="action_test_notifications">Test notifications</string>
+    <string name="action_remove_calendars">Remove calendars</string>
+
+    <string name="action_enabled_title">IronE enabled</string>
+    <string name="action_enabled_title_condensed">enabled</string>
+    <string name="action_disabled_title">IronE disabled</string>
+    <string name="action_disabled_title_condensed">disabled</string>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_do_not_disturb_title">Do not disturb</string>
+    <string name="pref_do_not_disturb">Honor "do no disturb" mode if set</string>
+
+    <string name="pref_screen_on_title">Off when on</string>
+    <string name="pref_screen_on">Do not notify when device is being used</string>
+
+    <string name="pref_notifier_title">Notification method</string>
+    <string name="pref_notifier_bluetooth">Notifications will be sent via Bluetooth</string>
+    <string name="pref_notifier_calendar">Notifications will be created as calendar events</string>
+    <string name="pref_notifier_item_calendar">Calendar Event</string>
+    <string name="pref_notifier_item_bluetooth">Bluetooth</string>
+
+    <string name="action_notification_access">Notification access</string>
+    <string name="action_test_notification_result">Test result: %1$s</string>
+    <string name="action_test_notification_successful">successful</string>
+    <string name="action_test_notification_failed">failed</string>
+    <string name="action_test_notification_delayed">delayed</string>
+</resources>

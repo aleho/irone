@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2018 Alexander Hofbauer
+  ~
+  ~ This file is part of IronE.
+  ~
+  ~ IronE is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ IronE is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with IronE.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="notifications_intent_question">Zugriff auf Benachrichtigungen wurde für diese App noch nicht aktiviert. Jetzt aktivieren?</string>
+    <string name="permissions_needed_calendar">Zugriff auf Kalender wird benötigt, damit Termine als Benachrichtigungen erkannt werden.</string>
+    <string name="permissions_needed_bluetooth">Bluetooth wird benötigt, damit Benachrichtigungen an Ihre Uhr gesendet werden können.</string>
+    <string name="action_remove_calendars">Kalender entfernen</string>
+    <string name="action_enabled_title">IronE aktiviert</string>
+    <string name="action_enabled_title_condensed">aktiviert</string>
+    <string name="action_disabled_title">IronE inaktiv</string>
+    <string name="action_disabled_title_condensed">inaktiv</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_do_not_disturb">\"Nicht stören\"-Einstellung beachten, falls aktiv</string>
+    <string name="pref_do_not_disturb_title">Nicht stören</string>
+    <string name="pref_screen_on">Keine Benachrichtigungen, wenn Gerät verwendet wird</string>
+    <string name="pref_screen_on_title">Aus wenn an</string>
+    <string name="pref_notifier_title">Benachrichtigung</string>
+    <string name="pref_notifier_bluetooth">Benachrichtigungen werden über Bluetooth gesendet</string>
+    <string name="pref_notifier_calendar">Benachrichtigungen werden als Kalendereinträge erzeugt</string>
+    <string name="pref_notifier_item_calendar">Kalendereintrag</string>
+    <string name="pref_notifier_item_bluetooth">Bluetooth</string>
+    <string name="action_test_notifications">Benachrichtigungen testen</string>
+    <string name="action_notification_access">Benachrichtigungszugriff</string>
+    <string name="action_test_notification_result">Testergebnis: %1$s</string>
+    <string name="action_test_notification_successful">erfolgreich</string>
+    <string name="action_test_notification_failed">fehlgeschlagen</string>
+    <string name="action_test_notification_delayed">verzögert</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2018 Alexander Hofbauer
+  ~
+  ~ This file is part of IronE.
+  ~
+  ~ IronE is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ IronE is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with IronE.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <ListPreference
+        android:key="pref_notifier"
+        android:defaultValue="0"
+
+        android:title="@string/pref_notifier_title"
+        android:summary="@string/pref_notifier_calendar"
+
+        android:entries="@array/notifiers_labels"
+        android:entryValues="@array/notifiers"
+        />
+
+    <CheckBoxPreference
+        android:key="pref_do_not_disturb"
+        android:defaultValue="true"
+
+        android:title="@string/pref_do_not_disturb_title"
+        android:summary="@string/pref_do_not_disturb"
+        />
+
+    <CheckBoxPreference
+        android:key="pref_screen_on"
+        android:defaultValue="true"
+
+        android:title="@string/pref_screen_on_title"
+        android:summary="@string/pref_screen_on"
+        />
+
+</PreferenceScreen>

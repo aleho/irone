@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2018 Alexander Hofbauer
+  ~
+  ~ This file is part of IronE.
+  ~
+  ~ IronE is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ IronE is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with IronE.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <!-- https://material.io/guidelines/style/color.html#color-color-palette -->
+
+    <color name="colorPrimary">#424242</color><!-- Grey 800 -->
+    <color name="colorPrimaryDark">#212121</color><!-- Grey 900 -->
+    <color name="colorAccent">#408cff</color>
+
+    <color name="disabledItemBackground">@android:color/transparent</color>
+    <color name="disabledImageTint">#a0c6c6c6</color>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright © 2018 Alexander Hofbauer
+  ~
+  ~ This file is part of IronE.
+  ~
+  ~ IronE is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ IronE is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with IronE.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <group
+        android:id="@+id/nav_actions"
+        android:checkableBehavior="none"
+        >
+        <item
+            android:id="@+id/nav_notification_access"
+            android:icon="@drawable/ic_notification_access"
+            android:title="@string/action_notification_access"
+            />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/title_activity_settings"
+            />
+    </group>
+
+    <group
+        android:id="@+id/nav_test"
+        android:checkableBehavior="none"
+        >
+        <item
+            android:id="@+id/nav_remove_calendars"
+            android:icon="@drawable/ic_remove_calendar"
+            android:title="@string/action_remove_calendars"
+            />
+
+        <item
+            android:id="@+id/nav_test_notifications"
+            android:icon="@drawable/ic_test_notifications"
+            android:title="@string/action_test_notifications"
+            />
+    </group>
+
+</menu>
