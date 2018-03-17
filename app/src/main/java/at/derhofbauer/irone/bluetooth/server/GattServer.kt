@@ -49,7 +49,7 @@ internal class GattServer(
     /**
      * Starts the GATT server
      */
-    fun start(onStarted: (() -> Unit)?) {
+    fun start(onConnected: (() -> Unit)?, onDisonnected: (() -> Unit)?) {
         if (mServer != null) {
             Log.d(TAG, "server already started")
             return
@@ -58,19 +58,39 @@ internal class GattServer(
         Log.d(TAG, "starting server")
         val server = manager.openGattServer(applicationContext, ServerCallback(
             {
-                Log.d(TAG, "server started, device: ${it.address}")
-                mDevice = it
-
-                if (onStarted != null) {
-                    onStarted()
-                }
-            },
-            this::closeConnections
+                this.onConnected(it, onConnected)
+            }, {
+                this.onDisconnected(onDisonnected)
+            }
         ))
 
         server.addService(mServiceAlerts)
 
         mServer = server
+    }
+
+    /**
+     * Callback handler for device connection.
+     */
+    private fun onConnected(device: BluetoothDevice, onConnected: (() -> Unit)?) {
+        Log.d(TAG, "server started, device: ${device.address}")
+        mDevice = device
+
+        if (onConnected != null) {
+            onConnected()
+        }
+    }
+
+    /**
+     * Callback handler for device disconnection.
+     */
+    private fun onDisconnected(onDisconnected: (() -> Unit)?) {
+        closeConnections()
+        Log.d(TAG, "server closed")
+
+        if (onDisconnected != null) {
+            onDisconnected()
+        }
     }
 
     /**
@@ -110,15 +130,19 @@ internal class GattServer(
 
 
     private fun notifyNewAlert(data: ByteArray): Boolean {
-        val device = mDevice
         val server = mServer
+        val device = mDevice
 
-        if (device == null || server == null) {
-            Log.d(TAG, "can't send notification")
+        if (server == null) {
+            Log.d(TAG, "can't send notification, no server")
             return false
         }
 
-        //TODO: move me to server implementation (complete with mDevice holding, service instantiation, etc)
+        if (device == null) {
+            Log.d(TAG, "can't send notification, no device")
+            return false
+        }
+
         val characteristic = mServiceAlerts.getCharacteristic(Characteristic.NEW_ALERT)
         characteristic.value = data
 

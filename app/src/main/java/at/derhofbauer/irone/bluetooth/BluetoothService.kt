@@ -132,12 +132,12 @@ class BluetoothService(private val applicationContext: Context) : NotificationHa
 
 
     private fun start() {
-        mServer.start {
-            Log.d(TAG, "server started")
-
+        mServer.start({
             hasConnection = true
             sendDelayedNotification()
-        }
+        }, {
+            hasConnection = false
+        })
     }
 
 
