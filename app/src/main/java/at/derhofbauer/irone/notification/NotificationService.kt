@@ -98,9 +98,10 @@ class NotificationService internal constructor(
 
     internal fun addTestNotification(): Int {
         val notification = AppNotification()
+        val time = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(Calendar.getInstance().time)
         with (notification) {
-            primary   = "IronE"
-            secondary = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(Calendar.getInstance().time) + " 123456"
+            primary   = "IrönE"
+            secondary = "$time 123456"
         }
 
         return mNotificationHandler.addNotification(notification)
