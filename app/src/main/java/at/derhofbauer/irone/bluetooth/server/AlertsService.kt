@@ -76,11 +76,14 @@ internal class AlertsService: AbstractService()
             )
             unreadAlertCategory.setValue(toBitField(Data.SUPPORTED_ALERTS), BluetoothGattCharacteristic.FORMAT_UINT16, 0)
 
-            service.addCharacteristic(alertConfigPoint)
+
             service.addCharacteristic(newAlert)
-            service.addCharacteristic(unreadAlertStatus)
-            service.addCharacteristic(newAlertCategory)
-            service.addCharacteristic(unreadAlertCategory)
+
+            // TODO: do we need these characteristics?
+            //service.addCharacteristic(alertConfigPoint)
+            //service.addCharacteristic(unreadAlertStatus)
+            //service.addCharacteristic(newAlertCategory)
+            //service.addCharacteristic(unreadAlertCategory)
 
             return service
         }

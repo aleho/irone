@@ -29,7 +29,7 @@ internal class Characteristic: BtLeUUID() {
         val SUPPORTED_NEW_ALERT_CATEGORY: UUID      = UUID.fromString(BASE_UUID.format("2A47"))
         val SUPPORTED_UNREAD_ALERT_CATEGORY: UUID   = UUID.fromString(BASE_UUID.format("2A48"))
 
-        // primary prorietary service for communication (setup, device info, alerts config, etc)
+        // primary proprietary service for communication (setup, device info, alerts config, etc)
         val DEVICE_COMMUNICATION: UUID = UUID.fromString(PROPRIETARY_UUID.format("00000023"))
     }
 }
