@@ -25,11 +25,12 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        versionCode 12
+        versionCode 13
+        versionName '1.2'
+
         applicationId 'at.derhofbauer.irone'
         minSdkVersion 23
         targetSdkVersion 27
-        versionName '1.1'
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
