@@ -27,106 +27,105 @@ communication and BtLE services.
   <tbody>
     <tr>
       <td colspan="3">Service</td>
-      <td><pre>00001800-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00001800-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.service.generic_access.xml">Generic access</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00002a00-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002a00-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.gap.device_name.xml">Device name</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00002a01-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002a01-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.gap.appearance.xml">Appearance</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00002a04-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002a04-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.gap.peripheral_preferred_connection_parameters.xml">Peripheral Preferred Connection Parameters</a></td>
     </tr>
     <tr><td colspan="5"></td></tr>
     <tr>
       <td colspan="3">Service</td>
-      <td><pre>00001801-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00001801-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.service.generic_attribute.xml">Generic attribute</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00002a05-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002a05-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.gatt.service_changed.xml">Service Changed</a></td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td>Descriptor</td>
-      <td><pre>00002902-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002902-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml">Client Characteristic Configuration</a></td>
     </tr>
     <tr><td colspan="5"></td></tr>
     <tr>
       <td colspan="3">Service</td>
-      <td><pre>00000020-5749-5448-0037-000000000000</pre></td>
+      <td><code>00000020-5749-5448-0037-000000000000</code></td>
       <td>Proprietary</td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00000021-5749-5448-0037-000000000000</pre></td>
+      <td><code>00000021-5749-5448-0037-000000000000</code></td>
       <td>Proprietary</td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td>Descriptor</td>
-      <td><pre>00002902-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002902-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml">Client Characteristic Configuration</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00000022-5749-5448-0037-000000000000</pre></td>
+      <td><code>00000022-5749-5448-0037-000000000000</code></td>
       <td>Proprietary</td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00000023-5749-5448-0037-000000000000</pre></td>
+      <td><code>00000023-5749-5448-0037-000000000000</code></td>
       <td>Proprietary</td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td>Descriptor</td>
-      <td><pre>00002902-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002902-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml">Client Characteristic Configuration</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00000024-5749-5448-0037-000000000000</pre></td>
+      <td><code>00000024-5749-5448-0037-000000000000</code></td>
       <td>Proprietary</td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td>Descriptor</td>
-      <td><pre>00002902-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002902-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.descriptor.gatt.client_characteristic_configuration.xml">Client Characteristic Configuration</a></td>
     </tr>
   </tbody>
 </table>
 
-Judging by my observations, `00000023-5749-5448-0037-000000000000` seems to be used for various
-kinds of device setup and communication. For all other commands except for "show me device
-information" (which seems to return a MAC-Address), all other commands (e.g. "enable notifications",
-"tell me your current notification setup") require authentication by the client using a
-challenge-response procedure with a secret that was probably configured during initial device
-pairing and setup.
+Judging by my observations, `00000023-5749-5448-0037-000000000000` is used for various kinds of
+device setup and communication. Except for "get me device information" (which seems to return a
+MAC address), all commands (e.g. "enable notifications", "tell me your current notification setup")
+require authentication by the client using a challenge-response procedure with a secret that was
+probably configured during initial device pairing and setup.
 
 
 ## Gatt Server
@@ -142,13 +141,13 @@ pairing and setup.
   <tbody>
     <tr>
       <td colspan="3">Service</td>
-      <td><pre>00001811-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00001811-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.service.alert_notification.xml">Alert Notification Service</a></td>
     </tr>
     <tr>
       <td></td>
       <td colspan="2">Characteristic</td>
-      <td><pre>00002A46-0000-1000-8000-00805f9b34fb</pre></td>
+      <td><code>00002A46-0000-1000-8000-00805f9b34fb</code></td>
       <td><a href="https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.new_alert.xml">New Alert</a></td>
     </tr>
   </tbody>
