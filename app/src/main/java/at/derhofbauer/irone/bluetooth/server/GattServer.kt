@@ -25,6 +25,7 @@ import at.derhofbauer.irone.log.Log
 import at.derhofbauer.irone.bluetooth.comm.Data
 import at.derhofbauer.irone.bluetooth.comm.Writer
 import at.derhofbauer.irone.bluetooth.uuid.Characteristic
+import java.nio.charset.Charset
 import kotlin.collections.ArrayList
 
 //TODO: this stopped being a GATT server, rename, and move actual stuff to GATT Server
@@ -143,9 +144,11 @@ internal class GattServer(
             (if (type == Data.TYPE_CALL_END) Data.FLAG_DISABLED else Data.FLAG_ENABLED)
         ))
 
+        val bytes = text.toByteArray(Charset.forName("UTF-8"))
+
         // make sure we never send more than allowed (or available) bytes
-        for (i in 0..(minOf(text.length, NEW_ALERT_MAX_LEN) - 1)) {
-            data.add(text[i].toByte())
+        for (i in 0..(minOf(bytes.size, NEW_ALERT_MAX_LEN) - 1)) {
+            data.add(bytes[i])
         }
 
         return data.toByteArray()
