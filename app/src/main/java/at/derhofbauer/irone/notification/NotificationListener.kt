@@ -66,7 +66,10 @@ open class NotificationListener : NotificationListenerService()
                     mBluetoothService = service
                     service
                 }
-                else -> CalendarService.getInstance(context.contentResolver)
+                else -> {
+                    stopBtService()
+                    CalendarService.getInstance(context.contentResolver)
+                }
             }
 
         } catch (e: Exception) {
