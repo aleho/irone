@@ -31,11 +31,12 @@ import at.derhofbauer.irone.calendar.CalendarService
 
 import java.util.ArrayList
 import java.util.Calendar
-import java.util.HashMap
 
 import at.derhofbauer.irone.settings.AppSettingsManager
 import at.derhofbauer.irone.settings.IroneSettingsManager
 import java.text.DateFormat
+import java.util.concurrent.ConcurrentHashMap
+import kotlin.concurrent.thread
 
 class NotificationService internal constructor(
     notificationHandler: NotificationHandler,
@@ -81,7 +82,7 @@ class NotificationService internal constructor(
     private var prefScreenOn     = false
     private var mNotificationHandler: NotificationHandler = notificationHandler
 
-    private val mGroupTime = HashMap<String, Long>()
+    private val mGroupTime = ConcurrentHashMap<String, Long>()
 
     /**
      * Queries the current do-not-disturb status.
@@ -157,8 +158,12 @@ class NotificationService internal constructor(
         }
 
 
-        if (isGroupAndShouldSkip(sbn.groupKey)) {
-            Log.d(TAG, "isGroup and timeout not reached, skipping ${sbn.id}, ${sbn.groupKey}")
+        val groupKey = sbn.groupKey
+        val isSkippedGroup = isGroupAndShouldSkip(groupKey)
+        updateNotificationGroups(groupKey)
+
+        if (isSkippedGroup) {
+            Log.d(TAG, "isGroup and timeout not reached, skipping ${sbn.id}, $groupKey")
             return
         }
 
@@ -173,8 +178,6 @@ class NotificationService internal constructor(
         } catch (e: Exception) {
             Log.e(TAG, "Error building app notification", e)
         }
-
-        cleanupNotificationGroups()
     }
 
     /**
@@ -274,8 +277,6 @@ class NotificationService internal constructor(
         val now = Calendar.getInstance().timeInMillis
         val lastShown = mGroupTime[groupKey]
 
-        mGroupTime[groupKey] = now
-
         Log.d(TAG, "groupKey: $groupKey, lastShow: $lastShown")
         if (lastShown == null || lastShown <= 0) {
             return false
@@ -289,14 +290,20 @@ class NotificationService internal constructor(
     }
 
     /**
-     * Removes stale notification timeout information.
+     * Adds the current notification to the groups and removes stale notification timeout entries.
      */
-    private fun cleanupNotificationGroups() {
+    private fun updateNotificationGroups(groupKey: String) {
         val now = Calendar.getInstance().timeInMillis
 
-        for ((key, lastShown) in mGroupTime) {
-            if (lastShown + GROUP_DELAY < now) {
-                mGroupTime.remove(key)
+        // synchronized write for all following notifications
+        mGroupTime[groupKey] = now
+
+        // cleanup in a thread, we don't have to wait for that
+        thread (start = true) {
+            for ((key, lastShown) in mGroupTime) {
+                if (lastShown + GROUP_DELAY < now) {
+                    mGroupTime.remove(key)
+                }
             }
         }
     }
