@@ -55,4 +55,6 @@
     <string name="action_test_notification_successful">successful</string>
     <string name="action_test_notification_failed">failed</string>
     <string name="action_test_notification_delayed">delayed</string>
+
+    <string name="toggle_notifications">Notifications</string>
 </resources>

@@ -43,4 +43,5 @@
     <string name="action_test_notification_successful">erfolgreich</string>
     <string name="action_test_notification_failed">fehlgeschlagen</string>
     <string name="action_test_notification_delayed">verzögert</string>
+    <string name="toggle_notifications">Benachrichtigungen</string>
 </resources>

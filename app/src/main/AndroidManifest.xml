@@ -38,12 +38,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="at.derhofbauer.irone.MainActivity"
+                />
         </activity>
 
         <service
@@ -56,16 +68,18 @@
             </intent-filter>
         </service>
 
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity"
+        <service
+            android:name=".tile.ToggleTile"
+            android:icon="@drawable/ic_logo"
+            android:label="@string/toggle_notifications"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="at.derhofbauer.irone.MainActivity"
-                />
-        </activity>
+            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

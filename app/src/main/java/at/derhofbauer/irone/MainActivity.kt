@@ -109,6 +109,11 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    private val onChangedEnabled = { enabled: Boolean ->
+        Log.d(TAG, "enabled changed to $enabled, updating UI")
+        updateUiStatus(mSettingsManager.enabled)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -118,6 +123,7 @@ class MainActivity : AppCompatActivity(),
         setupListView()
 
         mSettingsManager = IroneSettingsManager.getInstance(this)
+        mSettingsManager.onChange(IroneSettingsManager.PREF_ENABLED, onChangedEnabled)
 
         if (BuildConfig.DEBUG) {
             PermissionsCheck(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)).runThread {
@@ -137,6 +143,8 @@ class MainActivity : AppCompatActivity(),
 
     override fun onDestroy() {
         super.onDestroy()
+
+        mSettingsManager.removeListener(onChangedEnabled)
 
         LocalBroadcastManager
             .getInstance(this)
@@ -319,11 +327,12 @@ class MainActivity : AppCompatActivity(),
     }
 
 
-    private fun setIroneEnabled(enabled: Boolean) {
-        mSettingsManager.enabled = enabled
-        mSettingsManager.save()
-
-        updateUiStatus(enabled)
+    private fun setIroneEnabled(status: Boolean) {
+        mSettingsManager.apply {
+            enabled = status
+            save()
+        }
+        updateUiStatus(status)
     }
 
     private fun updateUiStatus(enabled: Boolean) {
