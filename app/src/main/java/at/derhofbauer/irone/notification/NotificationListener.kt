@@ -49,6 +49,23 @@ open class NotificationListener : NotificationListenerService()
     private var mBluetoothService: BluetoothService? = null
     private var mService: NotificationService? = null
 
+    private lateinit var settingsManager: IroneSettingsManager
+
+
+    private val onChangeEnabled = { value: Boolean ->
+        if (value) {
+            prefIsEnabled = true
+        } else {
+            prefIsEnabled = false
+            Log.d(TAG, "disabled")
+            stopBtService()
+        }
+    }
+
+    private val onChangeNotifier = { value: String ->
+        updateNotificationHandler(value.toInt())
+    }
+
 
     /**
      * Initializes or returns the notification handler service based on the current setting.
@@ -102,10 +119,9 @@ open class NotificationListener : NotificationListenerService()
         if (mService == null) {
             Log.d(TAG, "initializing notification service")
 
-            val context         = applicationContext
-            val settingsManager = IroneSettingsManager.getInstance(context)
-            val method          = settingsManager.notifier
-            val handler         = getNotificationHandler(method)
+            val context = applicationContext
+            val method  = settingsManager.notifier
+            val handler = getNotificationHandler(method)
 
             try {
                 mService = NotificationService(
@@ -180,22 +196,11 @@ open class NotificationListener : NotificationListenerService()
         super.onCreate()
         Log.d(TAG, "created")
 
-        val settingsManager = IroneSettingsManager.getInstance(this)
-        prefIsEnabled = settingsManager.enabled
-        settingsManager.onChange(IroneSettingsManager.PREF_ENABLED) { value ->
-            if ((value as Boolean)) {
-                prefIsEnabled = true
-            } else {
-                prefIsEnabled = false
-                Log.d(TAG, "disabled")
-                stopBtService()
-            }
-        }
+        settingsManager = IroneSettingsManager.getInstance(applicationContext)
+        prefIsEnabled   = settingsManager.enabled
 
-        settingsManager.onChange(IroneSettingsManager.PREF_NOTIFIER) { value ->
-            val string = value as String
-            updateNotificationHandler(string.toInt())
-        }
+        settingsManager.onChange(IroneSettingsManager.PREF_ENABLED, onChangeEnabled)
+        settingsManager.onChange(IroneSettingsManager.PREF_NOTIFIER, onChangeNotifier)
 
         LocalBroadcastManager
             .getInstance(this)
@@ -210,6 +215,9 @@ open class NotificationListener : NotificationListenerService()
             .unregisterReceiver(mReceiver)
 
         stopBtService()
+
+        settingsManager.removeListener(onChangeEnabled)
+        settingsManager.removeListener(onChangeNotifier)
 
         super.onDestroy()
     }

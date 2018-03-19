@@ -49,14 +49,12 @@ class NotificationServiceUnitTest {
         whenever(powerManager.isInteractive).doReturn(isInteractive)
         whenever(notificationsListener.currentInterruptionFilter).doReturn(interruptionFilter)
 
-        whenever(ironeSettings.onChangeImmediate(any(), any())).doAnswer {
+        whenever(ironeSettings.onChangeImmediate<Any>(any(), any())).doAnswer {
             // always return default setting as true
             (it.getArgument(1) as (Any) -> Unit).invoke(true)
         }
 
-        val service = NotificationService(bluetoothService, powerManager, ironeSettings, appSettings, notificationsListener)
-
-        return service
+        return NotificationService(bluetoothService, powerManager, ironeSettings, appSettings, notificationsListener)
     }
 
     @Test

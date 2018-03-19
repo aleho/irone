@@ -46,13 +46,13 @@ class NotificationService internal constructor(
     private val mListener: NotificationListenerService
 ) {
     init {
-        mIroneSettings.onChangeImmediate(IroneSettingsManager.PREF_DO_NOT_DISTURB) { value ->
-            prefDoNotDisturb = value as Boolean
+        mIroneSettings.onChangeImmediate(IroneSettingsManager.PREF_DO_NOT_DISTURB) { value: Boolean ->
+            prefDoNotDisturb = value
             Log.d(TAG, "do-not-disturb: $value")
         }
 
-        mIroneSettings.onChangeImmediate(IroneSettingsManager.PREF_SCREEN_ON) { value ->
-            prefScreenOn = value as Boolean
+        mIroneSettings.onChangeImmediate(IroneSettingsManager.PREF_SCREEN_ON) { value: Boolean ->
+            prefScreenOn = value
             Log.d(TAG, "screen-on: $value")
         }
     }

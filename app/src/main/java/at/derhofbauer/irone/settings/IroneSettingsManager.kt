@@ -25,13 +25,16 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.preference.PreferenceManager
+import at.derhofbauer.irone.log.Log
 
-import java.util.HashMap
+import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue
 
 class IroneSettingsManager private constructor(context: Context)
 {
     companion object {
+        private const val TAG = "IroneSettingsManager"
+
         const val PREF_ENABLED        = "pref_enabled"
         const val PREF_DO_NOT_DISTURB = "pref_do_not_disturb"
         const val PREF_SCREEN_ON      = "pref_screen_on"
@@ -40,8 +43,7 @@ class IroneSettingsManager private constructor(context: Context)
         const val NOTIFIER_CALENDAR  = 0
         const val NOTIFIER_BLUETOOTH = 1
 
-
-        private val sListeners: HashMap<String, ConcurrentLinkedQueue<(Any) -> Unit>> = HashMap()
+        private val sListeners: ConcurrentHashMap<String, ConcurrentLinkedQueue<Callback<*>>> = ConcurrentHashMap()
         private lateinit var mPrefs: SharedPreferences
 
         @Volatile
@@ -67,8 +69,14 @@ class IroneSettingsManager private constructor(context: Context)
             val value = sharedPreferences.all[key] ?: return@OnSharedPreferenceChangeListener
 
             for (callback in callbacks) {
-                callback.invoke(value)
+                callback.exec(value)
             }
+        }
+    }
+
+    private class Callback<in T>(internal val func: (T) -> Unit) {
+        internal fun exec(value: Any) {
+            func.invoke(value as T)
         }
     }
 
@@ -117,8 +125,11 @@ class IroneSettingsManager private constructor(context: Context)
         editor = null
     }
 
-    //TODO: add types and convert here
-    fun onChange(pref: String, callback: (Any) -> Unit) {
+
+    /**
+     * Registers a change listener.
+     */
+    fun <T> onChange(pref: String, listener: (T) -> Unit) {
         if (sListeners.isEmpty()) {
             mPrefs.registerOnSharedPreferenceChangeListener(mOnPrefChangedListener)
         }
@@ -129,17 +140,36 @@ class IroneSettingsManager private constructor(context: Context)
             sListeners[pref] = queue
         }
 
-        if (!queue.contains(callback)) {
-            queue.offer(callback)
+        for (item in queue) {
+            if (item.func === listener) {
+                Log.d(TAG, "listener already registered for $pref ($listener)")
+                return
+            }
         }
+
+        queue.offer(Callback(listener))
     }
 
     /**
-     * Registers a change listener and executes the callback immediately with its current value.
+     * Registers a change listener and executes the listener immediately with its current value.
      */
-    fun onChangeImmediate(pref: String, callback: (Any) -> Unit) {
-        mPrefs.all[pref]?.let { callback.invoke(it) }
+    fun <T> onChangeImmediate(pref: String, listener: (T) -> Unit) {
+        mPrefs.all[pref]?.let { listener.invoke(it as T) }
 
-        onChange(pref, callback)
+        onChange(pref, listener)
+    }
+
+    /**
+     * Removes all references to a listener
+     */
+    fun <T> removeListener(listener: (T) -> Unit) {
+        for ((pref, queue) in sListeners) {
+            for (item in queue) {
+                if (item.func === listener) {
+                    Log.d(TAG, "listener removed for $pref ($listener)")
+                    queue.remove(item)
+                }
+            }
+        }
     }
 }
