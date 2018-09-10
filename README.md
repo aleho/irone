@@ -5,7 +5,7 @@ Notifications for Nokia Steel HR.
 
 ## About
 
-This app tries to extend notifications for the Nokia Steel HR to be received from any application.
+This app tried to extend notifications for the Nokia Steel HR to be received from any application and is now obsolete with latest firmware.
 
 
 # Findings
